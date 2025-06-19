@@ -67,8 +67,6 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     return str(waste_material) + material_units
 
 
-import math 
-
 def interest(principal, rate, periods):
     '''Interest.
 
@@ -96,6 +94,7 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    import math
     quantity = rate * periods
     simple_interest = principal * quantity
     interest = math.floor(principal + simple_interest)
