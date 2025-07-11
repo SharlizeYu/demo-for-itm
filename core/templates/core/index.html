@@ -1,0 +1,28 @@
+<h1>Hi, {{ user.username }}!</h1>
+<h2>Products</h2>
+<a href="/checkout">Go to check out</a>
+<a href="/history">View transaction history</a>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    {% for product in product_data %}
+    <tr>
+        <td><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></td>
+        <td>PHP {{ product.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+

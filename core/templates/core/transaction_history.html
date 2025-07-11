@@ -1,0 +1,25 @@
+<h1>Transaction History</h1>
+<a href="/">Back to products</a>
+<p>Hi, {{ user.username }}!</p>
+
+{% if transactions %}
+    {% for transaction in transactions %}
+        <h3>Transaction ID: {{ transaction.id }} | Date: {{ transaction.created_at }}</h3>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+            {% for line_item in transaction.lineitem_set.all %}
+                <tr>
+                    <td>{{ line_item.product.name }}</td>
+                    <td>{{ line_item.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+    {% endfor %}
+{% else %}
+    <p>You have no past transactions.</p>
+{% endif %}
+
